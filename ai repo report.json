@@ -1,0 +1,62 @@
+Tijd importeren
+Besturingssysteem importeren
+Van DatumTijd Datum/Tijd importeren
+
+# Scorebord bijwerken
+klasse Scorebord:
+ def __init__(zelf):
+ zelf.scores = {}
+ 
+Def update_score(zelf, team, punten):
+ Als team in Self.scores:
+ self.scores[team] += punten
+ anders:
+ self.scores[team] = punten
+ print(f"Score bijgewerkt: {team} heeft nu {self.scores[team]} punten.")
+
+def display_scores(zelf):
+ afdrukken("\n--- Scorebord ---")
+ Voor team, scoor in self.scores.items():
+ print(f"{team}: {score} punten")
+ afdrukken("-----------------\n")
+
+# Verslaggenerator
+klasse ReportGenerator:
+ def __init__(self, output_dir="verslagen"):
+ self.output_dir = output_dir
+ If not os.path.exists(output_dir):
+ os.makedirs(output_dir)
+
+def generate_report(zelf, titel, inhoud):
+ timestamp = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
+ bestandsnaam = f"{title}_{timestamp}.txt"
+ filepath = os.path.join(self.output_dir, bestandsnaam)
+
+met open(filepath, "w", encoding="utf-8") als bestand:
+ file.write(f"{title}\n")
+ file.write("=" * len(titel) + "\n")
+ bestand.schrijven(inhoud + "\n")
+
+print(f"Verslag gegenereerd: {filepath}")
+
+# Hoofdprogramma
+als __name__ == "__main__":
+ scorebord = Scorebord()
+ report_generator = RapportGenerator()
+
+# Scorebord bijwerken
+ scoreboard.update_score("Team A", 10)
+ scoreboard.update_score ("Team B", 15)
+ scoreboard.update_score("Team A", 5)
+ scoreboard.display_scores()
+
+# Verslag genereren
+ title = "Wedstrijdverslag"
+ inhoud = (
+ "Dit is een automatisch gegenereerd verslag van de wedstrijd.\n"
+ "De eindscore was als volgt:\n"
+ )
+ voor team, score in scoreboard.scores.items():
+ Inhoud += f"{team}: {score} punten\n"
+
+report_generator.generate_report(titel, inhoud)
