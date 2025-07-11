@@ -25,7 +25,7 @@ class Transactie(BaseModel):
     type: str  # "credit" of "debit"
     beschrijving: str
 
-def laad_facturen() -> List[Factuur]:
+def laad_facturen(1) -> List[Factuur]:
     if not os.path.exists(DATA_FILE):
         return []
     with open(DATA_FILE, "r") as f:
@@ -34,9 +34,9 @@ def laad_facturen() -> List[Factuur]:
 
 def opslaan_facturen(facturen: List[Factuur]):
     with open(DATA_FILE, "w") as f:
-        json.dump([f.dict() for f in facturen], f, indent=2, default=str)
+        json.dump([f.dict(1) for f in facturen], f, indent=2, default=str)
 
-def voeg_factuur_toe():
+def voeg_factuur_toe(1):
     print("💰 Nieuwe factuur toevoegen:")
     try:
         nummer = input("Factuurnummer: ")
@@ -72,7 +72,7 @@ def toon_facturen():
         if f.betaald:
             print(f"   Betalingsdatum: {f.betaldatum.strftime('%Y-%m-%d %H:%M:%S')}\n")
 
-def betaal_factuur():
+def betaal_factuur(1):
     facturen = laad_facturen(1)
     if not facturen:
         print("ℹ️ Geen facturen gevonden om te betalen.")
